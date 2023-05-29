@@ -34,7 +34,14 @@ const AppLayout = () => {
         </Route>
         <Route path="/contact" element={<Contact />} />
         <Route path="/restaurant/:id" element={<RestaurantMenu />} />
-        <Route path="/instamart" element={<Suspense fallback={<ShimmerUI />}><Instamart /></Suspense>} />
+        <Route
+          path="/instamart"
+          element={
+            <Suspense fallback={<ShimmerUI />}>
+              <Instamart />
+            </Suspense>
+          }
+        />
       </Routes>
       <Footer />
     </Provider>
@@ -43,7 +50,7 @@ const AppLayout = () => {
 
 const App = () => {
   return (
-    <Router>
+    <Router basename="/DevEats">
       <AppLayout />
     </Router>
   );
