@@ -14,7 +14,7 @@ import Cart from "./Cart.js";
 import { useSelector } from "react-redux";
 
 const navigation = [
-  { name: "Home", href: "/", current: false },
+  { name: "Home", href: "/DevEats", current: false },
   { name: "About", href: "/about", current: false },
   { name: "Contact", href: "/contact", current: false },
 ];
