@@ -25,13 +25,7 @@ function classNames(...classes) {
 
 //Composing Components
 const HeaderComponent = () => {
-  const [isLoggedIn, setisLoggedIn] = useState(true);
   const [searchText, setsearchText] = useState("");
-
-  const loggedInUser = () => {
-    //API call to check if the user is logged in
-    setisLoggedIn(!isLoggedIn);
-  };
 
   const [restaurants, filteredRes, setfilteredRes] = useRes();
 
@@ -62,7 +56,7 @@ const HeaderComponent = () => {
                 </Disclosure.Button>
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                <Link to="/">
+                <Link to="/DevEats">
                   <div className="flex flex-shrink-0 items-center">
                     <img
                       className="block h-8 w-auto lg:hidden"
@@ -212,47 +206,3 @@ const HeaderComponent = () => {
 };
 export default HeaderComponent;
 
-// const Title = () => {
-// return (
-//   <h1 id="title">
-//     Food Villa
-//   </h1>
-//     <a href="/">
-//       <img
-//         className="w-20"
-//         src="https://yt3.ggpht.com/ytc/AMLnZu_EC-ECXAxRAixWGEfMsE1rdSoetBHyxmLNdtCB=s900-c-k-c0x00ffffff-no-rj"
-//         alt="logo"
-//       />
-//     </a>
-//   );
-// };
-
-// <div className="flex justify-between m-5 mb-3 border border-black p-1">
-//   <Title />
-//   <div className="flex flex-row">
-//     <ul className="flex flex-row p-3">
-//       <Link to="/">
-//         <li className="p-2">Home</li>
-//       </Link>
-//       <Link to="/about">
-//         <li className="p-2">About</li>
-//       </Link>
-//       <Link to="/contact">
-//         <li className="p-2">Contact</li>
-//       </Link>
-//       {/* <Link to="/instamart">
-//         <li className="p-2">Instamart</li>
-//       </Link> */}
-//       <li className="p-2">Cart</li>
-//     </ul>
-//   </div>
-//   {isLoggedIn ? (
-//     <button className="logBtn" onClick={loggedInUser}>
-//       Logout
-//     </button>
-//   ) : (
-//     <button className="logBtn" onClick={loggedInUser}>
-//       Log In
-//     </button>
-//   )}
-// </div>
