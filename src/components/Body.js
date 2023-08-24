@@ -14,19 +14,24 @@ const Body = () => {
   const [activeSort, setActiveSort] = useState(null);
 
   useEffect(() => {
-    if (restaurants) {
-      // Filter the data initially when the component mounts
+    if (restaurants.length > 0) {
       const filteredData = filterData(searchTxt, restaurants);
       setFilteredRes(filteredData);
     }
   }, [searchTxt, restaurants, setFilteredRes]);
 
+  useEffect(() => {
+    if (filteredRes.length === 0 && restaurants.length > 0) {
+      setFilteredRes([...restaurants]); // This ensures filteredRes gets populated when data is available
+    }
+  }, [filteredRes, restaurants]);
+
   const handleSortByCostLowToHigh = () => {
     const sortedData = [...filteredRes].sort((a, b) => {
-      if (a.data.costForTwo < b.data.costForTwo) {
+      if (a.info.costForTwo < b.info.costForTwo) {
         return -1;
       }
-      if (a.data.costForTwo > b.data.costForTwo) {
+      if (a.info.costForTwo > b.info.costForTwo) {
         return 1;
       }
       return 0;
@@ -37,10 +42,10 @@ const Body = () => {
 
   const handleSortByCostHighToLow = () => {
     const sortedData = [...filteredRes].sort((a, b) => {
-      if (a.data.costForTwo > b.data.costForTwo) {
+      if (a.info.costForTwo > b.info.costForTwo) {
         return -1;
       }
-      if (a.data.costForTwo < b.data.costForTwo) {
+      if (a.info.costForTwo < b.info.costForTwo) {
         return 1;
       }
       return 0;
@@ -51,10 +56,10 @@ const Body = () => {
 
   const handleSortByRating = () => {
     const sortedData = [...filteredRes].sort((a, b) => {
-      if (a.data.avgRating > b.data.avgRating) {
+      if (a.info.avgRating > b.info.avgRating) {
         return -1;
       }
-      if (a.data.avgRating < b.data.avgRating) {
+      if (a.info.avgRating < b.info.avgRating) {
         return 1;
       }
       return 0;
@@ -65,10 +70,10 @@ const Body = () => {
 
   const handleSortByDeliveryTime = () => {
     const sortedData = [...filteredRes].sort((a, b) => {
-      if (a.data.deliveryTime < b.data.deliveryTime) {
+      if (a.info.deliveryTime < b.info.deliveryTime) {
         return -1;
       }
-      if (a.data.deliveryTime > b.data.deliveryTime) {
+      if (a.info.deliveryTime > b.info.deliveryTime) {
         return 1;
       }
       return 0;
@@ -93,7 +98,9 @@ const Body = () => {
     <div className="bg-gray-200 min-h-[90vh]">
       <div className="flex flex-col lg:flex-row items-center justify-between px-12 py-2">
         <div className="flex flex-row items-center justify-center">
-          <div className="text-xl lg:w-auto w-[50%]">{filteredRes.length} restaurants</div>
+          <div className="text-xl lg:w-auto w-[50%]">
+            {filteredRes.length} restaurants
+          </div>
           <div className="flex flex-row items-center justify-center lg:w-auto w-[50%]">
             <input
               type="text"
@@ -147,25 +154,29 @@ const Body = () => {
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-center border border-gray-300 w-[93vw] h-[1px] mx-10">
-
-      </div>
+      <div className="flex items-center justify-center border border-gray-300 w-[93vw] h-[1px] mx-10"></div>
       <div className="flex flex-wrap lg:ml-[35px] ml-[8px]">
-        {filteredRes?.length === 0 ? (
-          <div className="bg-gray-200 w-[100vw] flex items-center justify-center">
-            <h1>No restaurants matched your Search</h1>
-          </div>
-        ) : (
-          filteredRes.map((restaurant) => (
-            <Link
-              to={"/restaurant/" + restaurant.data.id}
-              key={restaurant.data.id}
-            >
-              <RestaurantCard {...restaurant.data} />
-            </Link>
-          ))
-        )}
-      </div>
+  {filteredRes?.length === 0 ? (
+    <div className="bg-gray-200 w-[100vw] flex items-center justify-center">
+      <h1>No restaurants matched your Search</h1>
+    </div>
+  ) : (
+    filteredRes.map((restaurant, index) => {
+    console.log("restaurant.data", restaurant.data)
+    return(     
+      <Link
+        to={
+          restaurant.info && restaurant.info.id
+            ? "/restaurant/" + restaurant.info.id
+            : "/restaurant/not-found"
+        }
+        key={restaurant.info.id}
+      >
+        <RestaurantCard {...restaurant.info} />
+      </Link>
+    )})
+  )}
+</div>
     </div>
   ) : (
     <ShimmerUI />

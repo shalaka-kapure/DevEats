@@ -13,6 +13,7 @@ const RestaurantCard = ({
   avgRating,
   deliveryTime,
   cuisines,
+  sla,
   slaString,
   costForTwo,
   aggregatedDiscountInfo,
@@ -44,10 +45,10 @@ const RestaurantCard = ({
             </span>
           </div>
           <div className="w-[3px] h-[3px] rounded-full bg-black"></div>
-          <span className="">{slaString}</span>
+          <span className="">{sla.slaString}</span>
           <div className="res-price">
             <span className="text-xs">
-             ₹{costForTwo / 100} FOR TWO
+             {costForTwo}
             </span>
           </div>
         </div>
