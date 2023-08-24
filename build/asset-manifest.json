@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/DevEats/static/css/main.557766c2.css",
+    "main.js": "/DevEats/static/js/main.d6607425.js",
+    "static/js/842.0678f1d6.chunk.js": "/DevEats/static/js/842.0678f1d6.chunk.js",
+    "index.html": "/DevEats/index.html",
+    "main.557766c2.css.map": "/DevEats/static/css/main.557766c2.css.map",
+    "main.d6607425.js.map": "/DevEats/static/js/main.d6607425.js.map",
+    "842.0678f1d6.chunk.js.map": "/DevEats/static/js/842.0678f1d6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.557766c2.css",
+    "static/js/main.d6607425.js"
+  ]
+}
