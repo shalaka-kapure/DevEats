@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkdeveats=self.webpackChunkdeveats||[]).push([[842],{842:function(e,n,s){s.r(n);var t=s(184);n.default=function(){return(0,t.jsx)("div",{children:(0,t.jsx)("h1",{children:"Instamart"})})}}}]);
-//# sourceMappingURL=842.0678f1d6.chunk.js.map
