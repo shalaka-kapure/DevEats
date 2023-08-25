@@ -28,7 +28,7 @@ const AppLayout = () => {
       <HeaderComponent toggleCart={toggleCart} />
       {isCartOpen && <Cart />}
       <Routes>
-        <Route path="/DevEats" element={<Body />} />
+        <Route path="/" element={<Body />} />
         <Route path="/about" element={<About />}>
           <Route path="profile" element={<Profile />} />
         </Route>
