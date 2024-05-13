@@ -15,7 +15,7 @@ const RestaurantCard = ({
   cuisines,
   sla,
   slaString,
-  costForTwo,
+  costForTwoString,
   aggregatedDiscountInfo,
 }) => {
   return (
@@ -28,7 +28,7 @@ const RestaurantCard = ({
           : cloudinaryImageId)
       }
       alt=""
-      className=" rounded object-cover"
+      className=" rounded object-cover h-[200px]"
     />
     <div className="res-details px-2">
       <h4 className="font-medium text-base text-black">{name}</h4>
@@ -45,10 +45,10 @@ const RestaurantCard = ({
             </span>
           </div>
           <div className="w-[3px] h-[3px] rounded-full bg-black"></div>
-          <span className="">{sla.slaString}</span>
+          <span className="">{slaString}</span>
           <div className="res-price">
             <span className="text-xs">
-             {costForTwo}
+             {costForTwoString}
             </span>
           </div>
         </div>

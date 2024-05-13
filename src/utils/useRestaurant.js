@@ -9,21 +9,23 @@ const useRestaurant = (id) => {
     getResInfo();
   }, []);
 
+  console.log("resId", id)
+
   async function getResInfo() {
-    const data = await fetch(MENU_DATA_URL + id + "&submitAction=ENTER");
+    const data = await fetch(MENU_DATA_URL + id);
 
     const json = await data.json();
-    // console.log(json.data);
-    // console.log(json?.data?.cards[0]?.card?.card?.info);
-    setResInfo(json?.data?.cards[0]?.card?.card?.info);
-    console.log(
+    console.log(json.data);
+    console.log(json?.data?.cards[2]);
+    setResInfo(json?.data?.cards[2]?.card?.card?.info);
+    console.log("menu",
       Object.values(
-        json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards
+        json?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards
       )
     );
     setMenu(
       Object.values(
-        json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards
+        json?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards
       )
     );
   }

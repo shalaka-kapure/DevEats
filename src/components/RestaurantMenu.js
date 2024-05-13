@@ -17,7 +17,7 @@ const RestaurantMenu = () => {
   const handleAddItem = (item) => {
     dispatch(addItem(item));
   }
-
+  console.log("id", id)
   if (!isOnline) {
     return (
       <h1>
@@ -25,7 +25,7 @@ const RestaurantMenu = () => {
       </h1>
     );
   }
-
+console.log("menu from res menu", menu[0].card?.info?.category)
   return menu?.length > 0 ? (
     <>
       <div className="flex flex-col bg-gray-200">

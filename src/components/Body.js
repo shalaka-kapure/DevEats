@@ -162,17 +162,17 @@ const Body = () => {
     </div>
   ) : (
     filteredRes.map((restaurant, index) => {
-    console.log("restaurant.data", restaurant.data)
+    console.log("restaurant.data", filteredRes)
     return(     
       <Link
         to={
-          restaurant.info && restaurant.info.id
-            ? "/restaurant/" + restaurant.info.id
+          restaurant.data && restaurant.data.id
+            ? "/restaurant/" + restaurant.data.id
             : "/restaurant/not-found"
         }
-        key={restaurant.info.id}
+        key={index}
       >
-        <RestaurantCard {...restaurant.info} />
+        <RestaurantCard {...restaurant.data} />
       </Link>
     )})
   )}
